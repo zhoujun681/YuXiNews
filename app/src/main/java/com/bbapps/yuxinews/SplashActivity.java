@@ -1,6 +1,7 @@
 package com.bbapps.yuxinews;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -10,7 +11,11 @@ import android.view.animation.ScaleAnimation;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.bbapps.yuxinews.activity.GuideActivity;
+import com.bbapps.yuxinews.utils.CacheUtils;
+
 public class SplashActivity extends Activity {
+    public static final String START_MAIN = "start_main"; //是否进入过主页面
     private RelativeLayout rl_splash_root;
 
     @Override
@@ -82,6 +87,18 @@ public class SplashActivity extends Activity {
          */
         @Override
         public void onAnimationEnd(Animation animation) {
+            //判断是否进入过主页面
+            boolean isStartMain = CacheUtils.getBoolean(SplashActivity.this, START_MAIN);
+            if(isStartMain){
+                //如果进入过主页面，则直接进入主页面
+            }else {
+                //如果没有进入过主页面，则进入引导页面
+                Intent intent = new Intent(SplashActivity.this, GuideActivity.class);
+                startActivity(intent);
+            }
+
+
+
             Toast.makeText(SplashActivity.this, "感谢使用玉溪新闻app，请稍等。。。", Toast.LENGTH_SHORT).show();
         }
 
