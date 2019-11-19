@@ -1,2 +1,3 @@
-include ':app'
+include ':app', ':SlidingMenulibrary', ':xutils3'
 rootProject.name='YuXiNews'
+include ':ViewPagerIndicator_library'

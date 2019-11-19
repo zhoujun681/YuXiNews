@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.bbapps.yuxinews.SplashActivity;
+import com.bbapps.yuxinews.activity.GuideActivity;
 
 /**
  * @ProjectName: YuXiNews
@@ -24,5 +25,37 @@ public class CacheUtils {
     public static boolean getBoolean(Context context, String key) {
         SharedPreferences sp = context.getSharedPreferences("YuXiNews",Context.MODE_PRIVATE);
         return sp.getBoolean(key,false);
+    }
+
+    /**
+     * 保存布尔类型值
+     * @param context
+     * @param key
+     * @param vaule
+     */
+    public static void putBoolean(Context context, String key, boolean vaule) {
+        SharedPreferences sp = context.getSharedPreferences("YuXiNews",Context.MODE_PRIVATE);
+        sp.edit().putBoolean(key,vaule).commit();
+    }
+
+    /**
+     * 保存文本数据
+     * @param context
+     * @param key
+     * @param vaule
+     */
+    public static void putString(Context context, String key, String vaule) {
+        SharedPreferences sp = context.getSharedPreferences("YuXiNews",Context.MODE_PRIVATE);
+        sp.edit().putString(key,vaule).commit();
+    }
+
+    /**
+     * 获取缓存文本数据
+     * @param context
+     * @param key
+     */
+    public static String getString(Context context, String key) {
+        SharedPreferences sp = context.getSharedPreferences("YuXiNews",Context.MODE_PRIVATE);
+        return sp.getString(key,"");
     }
 }

@@ -89,15 +89,17 @@ public class SplashActivity extends Activity {
         public void onAnimationEnd(Animation animation) {
             //判断是否进入过主页面
             boolean isStartMain = CacheUtils.getBoolean(SplashActivity.this, START_MAIN);
+            Intent intent;
             if(isStartMain){
                 //如果进入过主页面，则直接进入主页面
+                //跳转到主页面
+                 intent = new Intent(SplashActivity.this, MainActivity.class);
             }else {
                 //如果没有进入过主页面，则进入引导页面
-                Intent intent = new Intent(SplashActivity.this, GuideActivity.class);
-                startActivity(intent);
+                 intent = new Intent(SplashActivity.this, GuideActivity.class);
             }
-
-
+            startActivity(intent);
+            finish();
 
             Toast.makeText(SplashActivity.this, "感谢使用玉溪新闻app，请稍等。。。", Toast.LENGTH_SHORT).show();
         }
